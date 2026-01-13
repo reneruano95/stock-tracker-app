@@ -40,9 +40,9 @@ If you're getting started and need assistance or face any bugs, join our active 
 
 ## <a name="tech-stack">⚙️ Tech Stack</a>
 
-- **[CodeRabbit](https://jsm.dev/stocks-coderabbit)** is an AI-powered code review assistant that integrates with GitHub. It helps developers catch bugs, enforce best practices, and maintain consistent code quality across pull requests, reducing manual review effort and speeding up the development workflow.
+- **[Polygon.io](https://polygon.io/)** is a real-time and historical market data API providing stock quotes, aggregates, news, and reference data. With unlimited API calls and 5 years of historical data, it's perfect for building comprehensive trading apps and financial dashboards.
 
-- **[Finnhub](https://finnhub.io/)** is a real-time financial data API that provides stock, forex, and cryptocurrency market data. It offers developers access to fundamental data, economic indicators, and news, making it useful for building trading apps, dashboards, and financial analysis tools.
+- **[CodeRabbit](https://jsm.dev/stocks-coderabbit)** is an AI-powered code review assistant that integrates with GitHub. It helps developers catch bugs, enforce best practices, and maintain consistent code quality across pull requests, reducing manual review effort and speeding up the development workflow.
 
 - **[Inngest](https://jsm.dev/stocks-inngest)** _(Currently Disabled)_ - Platform for event-driven workflows and background jobs. Can be enabled later for AI-powered daily news summaries and automated workflows.
 
@@ -111,15 +111,14 @@ Create a new file named `.env` in the root of your project and add the following
 NODE_ENV='development'
 NEXT_PUBLIC_BASE_URL=http://localhost:3000
 
-# FINNHUB
-NEXT_PUBLIC_NEXT_PUBLIC_FINNHUB_API_KEY=
-FINNHUB_BASE_URL=https://finnhub.io/api/v1
+# POLYGON.IO
+POLYGON_API_KEY=your_polygon_api_key_here
 
 # GEMINI (Optional - only needed if enabling Inngest AI features)
 # GEMINI_API_KEY=
 ```
 
-Replace the placeholder values with your real credentials. You can get these by signing up at: [**Finnhub**](https://finnhub.io).
+Replace the placeholder values with your real credentials. You can get these by signing up at: [**Polygon.io**](https://polygon.io/).
 
 **Running the Project**
 

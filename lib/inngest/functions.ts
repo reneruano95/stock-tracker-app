@@ -1,7 +1,7 @@
 import { inngest } from "@/lib/inngest/client";
 import { NEWS_SUMMARY_EMAIL_PROMPT } from "@/lib/inngest/prompts";
 import { getWatchlistSymbols } from "@/lib/storage/file-storage";
-import { getNews } from "@/lib/actions/finnhub.actions";
+import { getNews } from "@/lib/actions/polygon.actions";
 import { getFormattedTodayDate } from "@/lib/utils";
 
 export const sendDailyNewsSummary = inngest.createFunction(
