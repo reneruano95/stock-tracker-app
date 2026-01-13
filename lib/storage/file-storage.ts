@@ -1,10 +1,10 @@
-'use server';
+"use server";
 
-import fs from 'fs/promises';
-import path from 'path';
+import fs from "fs/promises";
+import path from "path";
 
-const DATA_DIR = path.join(process.cwd(), '.data');
-const WATCHLIST_FILE = path.join(DATA_DIR, 'watchlist.json');
+const DATA_DIR = path.join(process.cwd(), ".data");
+const WATCHLIST_FILE = path.join(DATA_DIR, "watchlist.json");
 
 // Ensure data directory exists
 async function ensureDataDir() {
@@ -26,7 +26,7 @@ export interface WatchlistItem {
 export async function getWatchlist(): Promise<WatchlistItem[]> {
   await ensureDataDir();
   try {
-    const data = await fs.readFile(WATCHLIST_FILE, 'utf-8');
+    const data = await fs.readFile(WATCHLIST_FILE, "utf-8");
     return JSON.parse(data);
   } catch {
     return [];
@@ -40,18 +40,23 @@ export async function saveWatchlist(watchlist: WatchlistItem[]): Promise<void> {
 }
 
 // Add item to watchlist
-export async function addToWatchlist(symbol: string, company: string): Promise<boolean> {
+export async function addToWatchlist(
+  symbol: string,
+  company: string
+): Promise<boolean> {
   const watchlist = await getWatchlist();
-  const exists = watchlist.some(item => item.symbol.toUpperCase() === symbol.toUpperCase());
-  
+  const exists = watchlist.some(
+    (item) => item.symbol.toUpperCase() === symbol.toUpperCase()
+  );
+
   if (exists) return false;
-  
+
   watchlist.push({
     symbol: symbol.toUpperCase(),
     company,
     addedAt: new Date().toISOString(),
   });
-  
+
   await saveWatchlist(watchlist);
   return true;
 }
@@ -59,10 +64,12 @@ export async function addToWatchlist(symbol: string, company: string): Promise<b
 // Remove item from watchlist
 export async function removeFromWatchlist(symbol: string): Promise<boolean> {
   const watchlist = await getWatchlist();
-  const filtered = watchlist.filter(item => item.symbol.toUpperCase() !== symbol.toUpperCase());
-  
+  const filtered = watchlist.filter(
+    (item) => item.symbol.toUpperCase() !== symbol.toUpperCase()
+  );
+
   if (filtered.length === watchlist.length) return false;
-  
+
   await saveWatchlist(filtered);
   return true;
 }
@@ -70,11 +77,13 @@ export async function removeFromWatchlist(symbol: string): Promise<boolean> {
 // Check if symbol is in watchlist
 export async function isInWatchlist(symbol: string): Promise<boolean> {
   const watchlist = await getWatchlist();
-  return watchlist.some(item => item.symbol.toUpperCase() === symbol.toUpperCase());
+  return watchlist.some(
+    (item) => item.symbol.toUpperCase() === symbol.toUpperCase()
+  );
 }
 
 // Get all watchlist symbols
 export async function getWatchlistSymbols(): Promise<string[]> {
   const watchlist = await getWatchlist();
-  return watchlist.map(item => item.symbol);
+  return watchlist.map((item) => item.symbol);
 }
