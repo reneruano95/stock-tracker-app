@@ -44,7 +44,7 @@ If you're getting started and need assistance or face any bugs, join our active 
 
 - **[Finnhub](https://finnhub.io/)** is a real-time financial data API that provides stock, forex, and cryptocurrency market data. It offers developers access to fundamental data, economic indicators, and news, making it useful for building trading apps, dashboards, and financial analysis tools.
 
-- **[Inngest](https://jsm.dev/stocks-inngest)** is a platform for event-driven workflows and background jobs. It allows developers to build reliable, scalable automated processes such as real-time alerts, notifications, and AI-powered workflows.
+- **[Inngest](https://jsm.dev/stocks-inngest)** _(Currently Disabled)_ - Platform for event-driven workflows and background jobs. Can be enabled later for AI-powered daily news summaries and automated workflows.
 
 - **File-Based Storage** - Simple JSON file storage for watchlists. Easy to migrate to any database (PostgreSQL, Supabase, Firebase, etc.) in the future.
 
@@ -66,9 +66,9 @@ If you're getting started and need assistance or face any bugs, join our active 
 
 👉 **Company Insights**: Explore detailed financial data such as PE ratio, EPS, revenue, recent news, filings, analyst ratings, and sentiment scores for informed decision-making.
 
-👉 **Real-Time Workflows**: Powered by **Inngest**, automate event-driven processes like price updates, alert scheduling, automated reporting, and AI-driven insights.
+👉 **Real-Time Workflows**: _(Optional)_ Inngest integration available for automated reporting and AI-driven insights when enabled.
 
-👉 **AI-Powered Alerts & Summaries**: Generate personalized market summaries, daily digests, and earnings report notifications, helping users track performance and make data-driven decisions.
+👉 **AI-Powered Summaries**: _(Optional)_ Generate market summaries and daily digests using Gemini AI or local AI (Ollama) when Inngest is enabled.
 
 👉 **Customizable Notifications**: Fine-tune alerts and notifications based on user watchlists and preferences for a highly personalized experience.
 
@@ -115,17 +115,24 @@ NEXT_PUBLIC_BASE_URL=http://localhost:3000
 NEXT_PUBLIC_NEXT_PUBLIC_FINNHUB_API_KEY=
 FINNHUB_BASE_URL=https://finnhub.io/api/v1
 
-# GEMINI
-GEMINI_API_KEY=
+# GEMINI (Optional - only needed if enabling Inngest AI features)
+# GEMINI_API_KEY=
 ```
 
-Replace the placeholder values with your real credentials. You can get these by signing up at: [**Gemini**](https://aistudio.google.com/prompts/new_chat?utm_source=chatgpt.com), [**Inngest**](https://jsm.dev/stocks-inggest), [**Finnhub**](https://finnhub.io).
+Replace the placeholder values with your real credentials. You can get these by signing up at: [**Finnhub**](https://finnhub.io).
 
 **Running the Project**
 
 ```bash
 npm run dev
-npx inngest-cli@latest dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser to view the project.
+
+**Optional: Enable Inngest (AI Features)**
+
+To enable AI-powered news summaries:
+
+1. Uncomment the code in `app/api/inngest/route.ts`
+2. Set `GEMINI_API_KEY` in `.env` (or configure local AI like Ollama)
+3. Run: `npx inngest-cli@latest dev`
